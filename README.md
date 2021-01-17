@@ -1,1 +1,6 @@
 # Portal
+
+Run
+```
+./setup.sh
+```
