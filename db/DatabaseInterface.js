@@ -1,5 +1,5 @@
 
-export class DataBaseInterface {
+class DataBaseInterface {
     constructor(url) {
         this.url = url;
     }
@@ -16,3 +16,5 @@ export class DataBaseInterface {
         console.log("close method not implemented by specific db");
     }
 }
+
+module.exports = { DataBaseInterface }

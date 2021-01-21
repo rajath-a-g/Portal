@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser');
-const MongoDBImpl = require('../db/MongoDBImpl')
+const {MongoDBImpl} = require('../db/MongoDBImpl')
 
 const app = express()
 const port = 3000
@@ -20,8 +20,7 @@ app.put('/EVIO/*', (req, res) => {
 setInterval(function(){
     var dataCopy = Data
     Data = {}
-    console.log(JSON.stringify(Data, null, 4))
-    var dbInstance = new MongoDBImpl('', 'Evio')
+    var dbInstance = new MongoDBImpl('mongodb://localhost:27017/', 'Evio')
     dbInstance.insertInto('Overlays', dataCopy)
 }, 30000)
 
