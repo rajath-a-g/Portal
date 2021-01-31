@@ -18,10 +18,12 @@ app.put('/EVIO/*', (req, res) => {
 })
 
 setInterval(function(){
+    var timeStamp = Date.now()
     var dataCopy = Data
+    console.log(dataCopy)
     Data = {}
-    var dbInstance = new MongoDBImpl('mongodb://localhost:27017/', 'Evio')
-    dbInstance.insertInto('Overlays', dataCopy)
+    var dbInstance = new MongoDBImpl('mongodb://localhost:27017/Evio', 'Evio')
+    dbInstance.insertInto(dataCopy, timeStamp)
 }, 30000)
 
 app.listen(port, () => {

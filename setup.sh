@@ -11,5 +11,6 @@ sudo apt-get install -y mongodb-org
 sudo systemctl start mongod
 sudo systemctl enable mongod
 npm install mongodb --save
+npm install mongoose --save
 npm install --save react
 npm install --save react-dom
