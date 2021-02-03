@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const overlaySchema = new mongoose.Schema({
     _id: Number,
     Overlay: {
+        OverlayId:String,
         NumNodes:Number,
         NumEdges:Number
     }
