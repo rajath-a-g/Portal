@@ -8,8 +8,16 @@ class DataBaseInterface {
         console.log("insertInto method not implemented by specific db");
     }
 
-    getData(tableName, intervalNumber) {
-        console.log("getData method not implemented by specific db");
+    getIntervals(tableName) {
+        console.log("getIntervals method not implemented by specific db");
+    }
+
+    getOverlays(tableName, intervalId) {
+        console.log("getOverlays method not implemented by specific db");
+    }
+
+    getTopology(tableName, intervalId, overlayId) {
+        console.log("getTopology method not implemented by specific db");
     }
 
     close() {

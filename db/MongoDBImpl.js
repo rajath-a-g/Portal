@@ -78,6 +78,18 @@ class MongoDBImpl extends DataBaseInterface {
             console.log("Saved data");
         });
     }
+
+    async getIntervals(tableName) {
+        return tableName.find({},{"Overlays":0});
+    }
+
+    async getOverlays(tableName, intervalId) {
+        return tableName.find({_id:intervalId});
+    }
+
+    async getTopology(tableName, intervalId, overlayId) {
+        return tableName.find({"Topology.Overlays.OverlayId":overlayId,"_id":intervalId});
+    }
 }
 
 module.exports = { MongoDBImpl }

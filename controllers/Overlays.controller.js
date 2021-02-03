@@ -1,9 +1,10 @@
 const {overlayModel, topologyModel} = require('../db/Model');
+//const MongoDBImpl = require('../db/MongoDBImpl')
 
 // Retrieve all Intervals from the database.
-exports.findAllIntervals = (req, res) => {
-
-    overlayModel.find({},{"Overlays":0})
+exports.findAllIntervals = (req, res, dbInstance) => {
+  
+    dbInstance.getIntervals(overlayModel)
       .then(data => {
         res.send(data);
       })
@@ -16,11 +17,11 @@ exports.findAllIntervals = (req, res) => {
 };
 
 // Retrieve all Overlays present at a particular interval
-exports.findOverlays = (req,res) => {
+exports.findOverlays = (req, res, dbInstance) => {
 
     const intervalId = parseFloat(req.query.interval);
-    //console.log(intervalId);
-    overlayModel.find({_id:intervalId})
+   
+    dbInstance.getOverlays(overlayModel, intervalId)
     .then(data => {
         res.send(data);
       })

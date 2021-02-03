@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser');
 const {MongoDBImpl} = require('../db/MongoDBImpl')
 var router = require("express").Router();
+const overlays = require("../controllers/Overlays.controller.js");
+const topology = require("../controllers/Topology.controller.js");
 
 const app = express()
 const port = 3000
@@ -20,9 +22,18 @@ app.get('/', (req, res) => {
 })
 
 //routing logic for GET all intervals
-require("../routes/overlays.routes")(app);
+//Syntax: http://localhost:3000/intervals
+app.get('/Intervals', (req, res) => overlays.findAllIntervals(req, res, dbInstance));
+
 //routing logic for GET overlay information given interval
-require("../routes/topology.routes")(app);
+//Syntax: http://localhost:3000/overlays?interval=intervalId 
+app.get('/Overlays', (req, res) => overlays.findOverlays(req, res, dbInstance));
+
+//routing logic for GET topology information given overlayid and interval
+//Syntax: http://localhost:3000/topology?overlayid=overlayId&interval=intervalId
+app.get('/Topology', (req, res) => topology.findTopology(req, res, dbInstance));
+
+//require("../routes/topology.routes")(app);
 
 app.put('/EVIO/*', (req, res) => {
     Data[Date.now()] = req.body
