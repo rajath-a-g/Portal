@@ -1,13 +1,15 @@
 const { Decimal128 } = require('mongodb');
 const mongoose = require('mongoose')
 
+const internalNumOverlaySchema =  new mongoose.Schema({
+    OverlayId:String,
+    NumNodes:Number,
+    NumEdges:Number
+}, { _id: false });
+
 const overlaySchema = new mongoose.Schema({
     _id: Number,
-    Overlay: {
-        OverlayId:String,
-        NumNodes:Number,
-        NumEdges:Number
-    }
+    Overlays:[internalNumOverlaySchema]
 }, { _id: false })
 
 var edgeSchema = new mongoose.Schema({
@@ -35,7 +37,7 @@ var internalOverlaySchema = new mongoose.Schema({
 
 const topologySchema = new mongoose.Schema({
     _id:Number,
-    Overlays:[internalOverlaySchema]
+    Topology:[internalOverlaySchema]
 }, { _id: false })
 
 
