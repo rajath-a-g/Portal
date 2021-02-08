@@ -1,5 +1,4 @@
 const {overlayModel, topologyModel} = require('../db/Model');
-//const MongoDBImpl = require('../db/MongoDBImpl')
 
 // Retrieve all Intervals from the database.
 exports.findAllIntervals = (req, res, dbInstance) => {

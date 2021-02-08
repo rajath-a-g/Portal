@@ -1,4 +1,7 @@
 
+/**
+ * Parent Interface of all the databases.
+ */
 class DataBaseInterface {
     constructor(url) {
         this.url = url;

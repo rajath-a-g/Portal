@@ -1,6 +1,10 @@
 const { Decimal128 } = require('mongodb');
 const mongoose = require('mongoose')
 
+/**
+ * Contains all the schemas for the database objects that is required by mongoose.
+ * All _id are disabled as we are defining custome _id for the required objects.
+ */
 const internalNumOverlaySchema =  new mongoose.Schema({
     OverlayId:String,
     NumNodes:Number,
@@ -9,8 +13,10 @@ const internalNumOverlaySchema =  new mongoose.Schema({
 
 const overlaySchema = new mongoose.Schema({
     _id: Number,
-    Overlays:[internalNumOverlaySchema]
+    Overlays:[internalNumOverlaySchema] // Array of Overlay objects
 }, { _id: false })
+
+//----------------------------------- End of Overlays collection schema ------------------------------------------
 
 var edgeSchema = new mongoose.Schema({
     EdgeId: String,
@@ -40,7 +46,10 @@ const topologySchema = new mongoose.Schema({
     Topology:[internalOverlaySchema]
 }, { _id: false })
 
+//----------------------------------- End of Topology collection schema ------------------------------------------
 
+
+//----------------------------------- Export the model so that they can be used ------------------------------------------
 
 var overlayModel = mongoose.model('overlayData', overlaySchema, "Overlays");
 var topologyModel = mongoose.model('topologyData', topologySchema, "Topology");
