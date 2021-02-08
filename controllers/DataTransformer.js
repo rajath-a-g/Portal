@@ -1,6 +1,14 @@
 
-
+/**
+ * Class to hold the data transform functionality.
+ */
 class DataTransformer {
+    /**
+     * Function to transform the raw data into data required to be stored in the DB.
+     * Refer to the design document for more details on the data format.
+     * 
+     * @param {JSON} data Json raw aggregated data.
+     */
     transformData(data) {
         var topologyDict = {};
         var overlayDict = {}
