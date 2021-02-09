@@ -1,6 +1,7 @@
 const {overlayModel, topologyModel} = require('../db/Model');
-
-// Retrieve all Intervals from the database.
+/**
+ * Function to retrieve all Intervals from the database
+ */
 exports.findAllIntervals = (req, res, dbInstance) => {
   
     dbInstance.getIntervals(overlayModel)
@@ -15,7 +16,9 @@ exports.findAllIntervals = (req, res, dbInstance) => {
       });
 };
 
-// Retrieve all Overlays present at a particular interval
+/**
+ *  Function to retrieve all Overlays present at a particular interval
+ */ 
 exports.findOverlays = (req, res, dbInstance) => {
 
     const intervalId = parseFloat(req.query.interval);

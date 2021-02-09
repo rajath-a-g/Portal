@@ -1,5 +1,7 @@
 const {overlayModel, topologyModel} = require('../db/Model');
-// Retrieve all Overlay information from the database, given interval 
+/**
+ * Function to retrieve all topology information from the database, given intervalId and overlayId
+ */ 
 exports.findTopology = (req, res, dbInstance) => {
     
     const overlayId = req.query.overlayid;

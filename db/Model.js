@@ -13,6 +13,7 @@ const internalNumOverlaySchema =  new mongoose.Schema({
 
 const overlaySchema = new mongoose.Schema({
     _id: Number,
+    createdAt: {type: Date, expires: process.env.expireTime, default: Date.now },
     Overlays:[internalNumOverlaySchema] // Array of Overlay objects
 }, { _id: false })
 
@@ -43,6 +44,7 @@ var internalOverlaySchema = new mongoose.Schema({
 
 const topologySchema = new mongoose.Schema({
     _id:Number,
+    createdAt:{type: Date, expires: process.env.expireTime, default: Date.now },
     Topology:[internalOverlaySchema]
 }, { _id: false })
 

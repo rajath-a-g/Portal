@@ -10,7 +10,7 @@ class MongoDBImpl extends DataBaseInterface {
     constructor(url, dbname) {
         super(url);
         // Once an instance is created the db connection is kept until the instance is alive.
-        this.connection = mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true})
+        this.connection = mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
         this.dbname = dbname;
     }
 
